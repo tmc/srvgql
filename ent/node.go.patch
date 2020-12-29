@@ -1,0 +1,11 @@
+--- ent/node.go	2020-12-27 15:15:08.000000000 -0800
++++ ent/node.go	2020-12-27 15:15:16.000000000 -0800
+@@ -170,7 +170,7 @@
+ 	}
+ 	if nopts.nodeType == nil {
+ 		nopts.nodeType = func(ctx context.Context, id pulid.ID) (string, error) {
+-			return nil, fmt.Errorf("cannot resolve noder (%v) without its type", id)
++			return "", fmt.Errorf("cannot resolve noder (%v) without its type", id)
+ 		}
+ 	}
+ 	return nopts

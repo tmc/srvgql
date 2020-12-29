@@ -1,0 +1,63 @@
+interface Node {
+  id: ID!
+}
+
+type Account implements Node {
+  id: ID!
+  email_address: String
+  # organization: OrganizationConnection
+}
+
+type Organization implements Node {
+  id: ID!
+  name: String
+  accounts: AccountConnection
+}
+
+type AccountConnection {
+  edges: [AccountEdge]
+  # pageInfo: PageInfo!
+}
+
+type AccountEdge {
+  cursor: String!
+  node: Account
+}
+
+type OrganizationConnection {
+  edges: [OrganizationEdge]
+  # pageInfo: PageInfo!
+}
+
+type OrganizationEdge {
+  cursor: String!
+  node: Organization
+}
+
+# type PageInfo {
+#   hasNextPage: Boolean!
+#   hasPreviousPage: Boolean!
+#   startCursor: String
+#   endCursor: String
+# }
+
+type Query {
+  node(id: ID!): Node
+  nodes(ids: [ID!]!): [Node]!
+  me: Account
+  org: Organization
+}
+
+# input IntroduceShipInput {
+#   factionId: String!
+#   shipNamed: String!
+# }
+
+# type IntroduceShipPayload {
+#   faction: Faction
+#   ship: Ship
+# }
+
+# type Mutation {
+#   introduceShip(input: IntroduceShipInput!): IntroduceShipPayload
+# }

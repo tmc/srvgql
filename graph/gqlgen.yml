@@ -1,0 +1,25 @@
+schema:
+  - srvgql.graphql
+
+resolver:
+  # Tell gqlgen to generate resolvers next to the schema file.
+  layout: follow-schema
+  dir: .
+  package: graph
+
+autobind:
+  - "github.com/tmc/srvgql/ent"
+
+exec:
+  package: graph
+
+model:
+  package: graph
+
+models:
+  ID:
+    model:
+      - github.com/tmc/pulid.ID
+  Node:
+    model:
+      - "github.com/tmc/srvgql/ent.Noder"
